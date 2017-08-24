@@ -1,0 +1,14 @@
+Logging:
+  IncludeScopes: false
+  LogLevel:
+    Default: Warning
+Services:
+- Service: Dashboard
+  ApiUrl: http://dashboard-1356000658.us-east-1.elb.amazonaws.com/api/v1
+  FrontEndUrl: http://d1kw3dbatz6mo7.cloudfront.net
+- Service: DataManagement
+  ApiUrl: http://datamanagement-14966217.us-east-1.elb.amazonaws.com/api/v1
+  FrontEndUrl: http://msp3-poc2.ert.com.s3-website-us-east-1.amazonaws.com
+- Service: Msp3
+  ApiUrl: http://portaldev1.ert.com/dev1c/msp3/MSP3WebApi/api/v1
+  FrontEndUrl: http://portaldev1.ert.com/dev1c/msp3/MSP3Frontend
