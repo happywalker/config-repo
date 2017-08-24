@@ -1,58 +1,15 @@
-info:
-  description: Spring Cloud Samples
-  url: https://github.com/spring-cloud-samples
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
-      
-foo: baz
-
----
-spring:
-  profiles: cloud
-  cloud:
-    config:
-      uri: ${vcap.services.${PREFIX:}configserver.credentials.uri:http://user:password@${PREFIX:}configserver.${application.domain:cfapps.io}}
-oauth2:
-  client:
-    tokenUri: ${vcap.services.${PREFIX:}sso.credentials.tokenUri:}
-    authorizationUri: ${vcap.services.${PREFIX:}sso.credentials.authorizationUri:}
-    clientId: ${vcap.services.${PREFIX:}sso.credentials.clientId:}
-    clientSecret: ${vcap.services.${PREFIX:}sso.credentials.clientSecret:}
-  resource:
-    tokenInfoUri: ${vcap.services.${OAUTH2_RESOURCE_SERVICEID:${oauth2.resource.serviceId:sso}}.credentials.tokenInfoUri:}
-    serviceId: ${PREFIX:}resource
-application:
-  domain: ${APPLICATION_DOMAIN:cfapps.io}
-endpoints:
-  restart: enabled
-eureka:
-  password: password
-  instance:
-    hostname: ${vcap.application.uris[0]:localhost}
-    nonSecurePort: 80
-  client:
-    serviceUrl:
-      defaultZone: ${vcap.services.${PREFIX:}eureka.credentials.uri:http://user:${eureka.password:}@${PREFIX:}eureka.${application.domain:cfapps.io}}/eureka/
-hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
-ribbon:
-  ConnectTimeout: 3000
-  ReadTimeout: 60000
-
----
-spring:
-  profiles: docker
-  cloud:
-    config:
-      uri: http://${CONFIGSERVER_1_PORT_8888_TCP_ADDR:localhost}:8888
-endpoints:
-  restart: enabled
-eureka:
-  instance:
-    nonSecurePort: 80
-    preferIpAddress: true
-  client:
-    serviceUrl:
-      defaultZone: http://${EUREKA_1_PORT_8761_TCP_ADDR:localhost}:8761/eureka/
-
+Logging:
+  IncludeScopes: false
+  LogLevel:
+    Default: Warning
+AppConfig:
+  Services:
+  - Service: Dashboard
+    ApiUrl: http://dashboard-1356000658.us-east-1.elb.amazonaws.com/api/v1
+    FrontEndUrl: http://d1kw3dbatz6mo7.cloudfront.net
+  - Service: DataManagement
+    ApiUrl: http://datamanagement-14966217.us-east-1.elb.amazonaws.com/api/v1
+    FrontEndUrl: http://msp3-poc2.ert.com.s3-website-us-east-1.amazonaws.com
+  - Service: Msp3
+    ApiUrl: http://portaldev1.ert.com/dev1c/msp3/MSP3WebApi/api/v1
+    FrontEndUrl: http://portaldev1.ert.com/dev1c/msp3/MSP3Frontend
