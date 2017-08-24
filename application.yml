@@ -1,3 +1,4 @@
+#common properties
 Logging:
   IncludeScopes: false
   LogLevel:
