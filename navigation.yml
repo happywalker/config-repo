@@ -1,11 +1,11 @@
 Services:
     - 
       Service: Dashboard
-      ApiUrl: http://dashboard.ert.com/api/v1
+      ApiUrl: http://dashboard.poc.ert.com/api/v1
       FrontEndUrl: http://d1kw3dbatz6mo7.cloudfront.net
     - 
       Service: DataManagement
-      ApiUrl: http://datamanagement.ert.com/api/v1
+      ApiUrl: http://datamanagement.poc.ert.com/api/v1
       FrontEndUrl: http://msp3-poc2.ert.com.s3-website-us-east-1.amazonaws.com
     - 
       Service: Msp3
